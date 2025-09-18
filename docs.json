@@ -16,7 +16,7 @@
           {
             "group": "Getting started",
             "pages": [
-              "index",
+              "Setup API Keys",
               "quickstart",
               "development"
             ]
