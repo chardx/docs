@@ -1,79 +1,71 @@
 ---
 title: "Setup API Keys"
-description: "Setting up API Keys"
+description: "Learn how to setup and use your API keys."
 ---
 
-## Get started in three steps
+To use our API, you must have an API key. This key authenticates your requests and allows us to associate your usage with your account.
 
-Get your documentation site running locally and make your first customization.
-
-### Step 1: Set up your local environment
+## Generating Your API Key
 
 <AccordionGroup>
-  <Accordion title="Clone your docs locally" icon="copy">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
+  <Accordion title="Step 1: Navigate to your Dashboard" icon="layout-dashboard">
+    Go to your account dashboard and find the **API Keys** section. This is typically located under **Settings** or **Developer Options**.
   </Accordion>
-  <Accordion title="Start the preview server" icon="rectangle-terminal">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+  <Accordion title="Step 2: Create a New Key" icon="key">
+    Click on the **"Create New Key"** or **"Generate API Key"** button. You may be prompted to give your key a name to help you identify it later. We recommend using a descriptive name, such as "My Awesome App Key".
+  </Accordion>
+  <Accordion title="Step 3: Copy and Secure Your Key" icon="copy">
+    Your new API key will be displayed on the screen. **This is the only time you will see the full key**, so be sure to copy it and store it in a secure location. For security reasons, we do not store your key in a way that is retrievable.
 
-    <Tip>
-      Your preview updates automatically as you edit files.
-    </Tip>
+    <Note>
+        Treat your API key like a password. Do not share it publicly or commit it to version control.
+    </Note>
   </Accordion>
 </AccordionGroup>
 
-### Step 2: Deploy your changes
+## Using Your API Key
 
-<AccordionGroup>
-  <Accordion title="Install our GitHub app" icon="github">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
+To authenticate your requests, you must include your API key in the `Authorization` header of each request. The header should be in the format `Bearer YOUR_API_KEY`.
 
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-  </Accordion>
-  <Accordion title="Update your site name and colors" icon="palette">
-    For a first change, let's update the name and colors of your docs site.
+Here is an example of how to use the API key with `curl`:
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+```bash
+curl "https://api.example.com/v1/some-endpoint" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
 
-    <Tip>
-      Try changing the primary color to see an immediate difference!
-    </Tip>
-  </Accordion>
-</AccordionGroup>
+<Tip>
+  Replace `YOUR_API_KEY` with the key you generated in the previous step.
+</Tip>
 
-### Step 3: Go live
+## Securing Your API Key
 
-<Accordion title="Publish your docs" icon="rocket">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
+Here are some best practices for keeping your API key secure:
 
 <CardGroup cols={2}>
-  <Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-    Learn MDX syntax and start writing your documentation.
+  <Card title="Do Not Expose Keys" icon="lock">
+    Avoid exposing your API keys in client-side code, such as in your frontend JavaScript. This can make it easy for others to steal your key.
   </Card>
-  <Card title="Customize style" icon="palette" href="/essentials/settings">
-    Make your docs match your brand perfectly.
+  <Card title="Use Environment Variables" icon="leaf">
+    Store your API key in an environment variable on your server. This prevents the key from being hardcoded in your application's source code.
   </Card>
-  <Card title="Add code examples" icon="square-code" href="/essentials/code">
-    Include syntax-highlighted code blocks.
+  <Card title="Rotate Your Keys" icon="arrows-rotate">
+    Regularly rotate your API keys by deleting old ones and generating new ones. This can help limit the damage if a key is ever compromised.
   </Card>
-  <Card title="API documentation" icon="code" href="/api-reference/introduction">
-    Auto-generate API docs from OpenAPI specs.
+  <Card title="Restrict Key Access" icon="ban">
+    If possible, configure your API keys to have restricted access. For example, you may be able to limit a key to specific API endpoints or grant it read-only permissions.
   </Card>
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+## Next Steps
+
+Now that you have your API key, you can start making requests to our API.
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Explore our API endpoints and see what you can build.
+  </Card>
+  <Card title="Quickstart Guide" icon="rocket" href="/quickstart">
+    Follow our quickstart guide to make your first API call.
+  </Card>
+</CardGroup>
